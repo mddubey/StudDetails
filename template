@@ -1,0 +1,10 @@
+<center><h1>Student Details</h1></center>
+<table  width = "800px">
+	<tr>
+		<td width = "200px"><h3><a href "/">Home</a></h3></td>
+		<td width = "200px"><h3><a href "/html/add.html">Add</a></h3></td>
+		<td width = "200px"><h3><a href "/html/list.html">Show </a></h3></td>
+		<td width = "200px"><h3><a href "/html/search.html">Search</a></h3></td>
+		<td width = "200px"><h3><a href "/html/delete.html">Delete</a></h3></td>
+	</tr>
+</table>

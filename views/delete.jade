@@ -1,0 +1,20 @@
+html
+  head
+    title Student Details
+    script(type='text/javascript', src='/javascript/validation.js')
+  body
+    include index
+    br
+    br
+    br
+    form#deleteRecord(action='/delete', method='post', name='deleteRecord')
+      table.functions
+        tr
+          td Roll No : 
+          td
+            input.box(type='text', name='RollNo', placeholder='Roll', onkeypress='return numValidation(event)', required='required')
+        br
+        tr
+          td(colspan='2')
+            center
+              input.btn(type='submit', value='Delete', onclick='return validateRoll()')

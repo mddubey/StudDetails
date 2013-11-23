@@ -1,0 +1,20 @@
+html
+  head
+    title Student Details
+    script(type='text/javascript', src='/javascript/validation.js')
+  body
+    include index
+    br
+    br
+    br
+    form#searchRecord(action='/search', method='post', name='searchRecord')
+      table.functions
+        tr
+          td Roll No : 
+          td
+            input.box(type='text', placeholder='Roll', name='RollNo', onkeypress='return numValidation(event)', required='required')
+        br
+        tr
+          td(colspan='2')
+            center
+              input.btn(type='submit', onclick='return validateRoll()', value='Search')

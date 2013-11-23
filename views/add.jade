@@ -1,0 +1,32 @@
+html
+  head
+    title Student Details
+    script(type='text/javascript', src='validation.js')
+  body
+    include index
+    form#addRecord(action='/add', method='post', name='addRecord')
+      table.functions
+        tr
+          td(colspan='2')
+            h3
+              u  Adding details in record 
+        tr
+          td Roll No: 
+          td
+            input.box(type='text', placeholder='Roll', name='RollNo', onkeypress='return numValidation(event)', required='required')
+          br
+          tr
+            td Name:	
+            td
+              input.box(type='text', placeholder='Name', name='Name')
+            br
+            tr
+              td Percentage: 
+              td
+                input#percent.box(type='text', name='Percentage', placeholder='Percentage', onkeypress='return numValidation(event)')
+              br
+              tr
+                td(colspan='2')
+                  br
+                  center
+                    input.btn(type='submit', value='Add Record', onclick='return validateInputs()')

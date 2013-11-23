@@ -1,0 +1,18 @@
+html
+  head
+    title Show List
+  body
+    include index
+    br
+    br
+    br
+    table.functions(border='1', width='500')
+      tr
+        th Roll No
+        th Name
+        th Percentage
+      -each val in list
+       tr
+         td #{val.RollNo}
+         td #{val.Name}
+         td #{val.Percentage}

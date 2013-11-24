@@ -1,4 +1,5 @@
 var handler = {};
+var fs = require('fs');
 var sd = require('./library.js').sd;
 
 handler.addRecord = function(req,res){
@@ -21,6 +22,17 @@ handler.showList = function(req,res){
         res.render('list',{message:'No Record available.',list:{}});
     else
         res.render('list',{message:'Student List',list:sd.records});
+};
+
+handler.login = function(req,res){
+    fs.readFile('userProfile.txt','utf-8',function(err,data){
+        if(err) throw err;
+        var profiles = JSON.parse(data);
+        var userID = req.body.userID;
+        var password = req.body.password;
+        profiles.hasOwnProperty(userID) && (profiles[userID].password == password)
+        && res.render('home') || res.send('Login Failed');
+    });
 };
 
 exports.handler = handler;

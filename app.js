@@ -23,13 +23,15 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+// app.get('/', routes.index);
+app.get('/home',routes.home);
 app.get('/users', user.list);
 app.get('/add',routes.add);
 app.get('/search',routes.search);
 app.get('/delete',routes.delete);
 
 app.get('/list',handler.showList);
+app.post('/login',handler.login);
 app.post('/add',handler.addRecord);
 app.post('/search',handler.searchRecord);
 app.post('/delete',handler.deleteRecord);

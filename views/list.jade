@@ -3,10 +3,7 @@ html
     title Show List
   body
     include template
-    br
-    br
-    br
-    h2  #{message}
+    h3  #{message}
     -if(Object.keys(list).length>0)
       table.functions(border='1', width='500')
         tr

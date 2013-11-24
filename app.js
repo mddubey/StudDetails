@@ -1,6 +1,3 @@
-var sd = require('./library.js').sd;
-var fs = require('fs');
-var homeTemplate = fs.readFileSync('./template','utf-8');
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -31,23 +28,14 @@ app.get('/users', user.list);
 app.get('/add',routes.add);
 app.get('/search',routes.search);
 app.get('/delete',routes.delete);
-app.get('/list',function(req,res){
-	if(JSON.stringify(sd.records)=='{}')
-		res.render('list',{message:'No Record available.',list:{}});
-	else
-		res.render('list',{message:'Student List',list:sd.records});
-});
 
+app.get('/list',handler.showList);
 app.post('/add',handler.addRecord);
-
 app.post('/search',handler.searchRecord);
-
 app.post('/delete',handler.deleteRecord);
 
 app.get('/*',function(req,res){
-	var err = '404 The Requested Page is not available\n';
-    var msg = 'The available functionalities are\n 1. Add \n 2. List \n 3. Search \n 4. Delete';
-	res.render('message',{message:err+msg});
+    res.render('message');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

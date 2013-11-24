@@ -16,7 +16,7 @@ sd.addDetail = function(details){
   details.Percentage = (+parseFloat(details.Percentage).toFixed(2));
   if(sd.records.hasOwnProperty(details.RollNo)){
     result.record[details.RollNo] = sd.records[details.RollNo];
-    result.message = details.RollNo +' Record already Exists.';
+    result.message = 'Roll Number ' + details.RollNo +' Record already Exists.';
     return result;
   }
   sd.records[details.RollNo] = details;
@@ -48,21 +48,29 @@ sd.list = function(text){
 };
 
 sd.searchRecord = function(record,fieldValue){
-  var result = {};
-  if(!record.hasOwnProperty(fieldValue))
-    return message_html.replace(/{message}/,'<h1>Roll number '+fieldValue+' is not present in records.</h1>');
-  result[fieldValue] = record[fieldValue];
+  var result = {record:{}};
+  if(!record.hasOwnProperty(fieldValue)){
+    result.message = 'Search Failed... Roll number '+fieldValue+' is not present in records.';
+    result.record = {};
+    return result;
+  };
+  result.record[fieldValue] = record[fieldValue];
+  result.message = 'Search Sucessfull.';
   return result;
 };
 
 sd.removeRecord = function(record,fieldValue){
-  var result = {};
-  if(!record.hasOwnProperty(fieldValue)) 
-    return message_html.replace(/{message}/,'<h1>Roll number '+fieldValue+' is not present in records. </h1>');
-  result[fieldValue] = record[fieldValue];
+  var result = {record:{}};
+  if(!record.hasOwnProperty(fieldValue)){
+    result.message = 'Deletion Failed... Roll number '+fieldValue+' is not present in records.';
+    result.record = {};
+    return result;
+  } 
+  result.record[fieldValue] = record[fieldValue];
   delete record[fieldValue];
   sd.records = record;
   sd.writeData(JSON.stringify(record));
+  result.message = 'Record Deleted.';
   return result;
 };
 

@@ -6,18 +6,17 @@ var message_page = fs.readFileSync('./public/message.html','utf-8');
 
 handler.addRecord = function(req,res){
     var result = sd.addDetail(req.body);
-    console.log(result);
     res.render('list',{message:result.message,list:result.record});
 };
 
 handler.searchRecord = function(req,res){
     var result = sd.searchRecord(sd.records,req.body.RollNo);
-    res.render('list',{list:result});
+    res.render('list',{message:result.message,list:result.record});
 };
 
 handler.deleteRecord = function(req,res){
     var result = sd.removeRecord(sd.records,req.body.RollNo);
-    res.render('list',{list:result});
+    res.render('list',{message:result.message,list:result.record});
 };
 
 handler.getUndefinedPage = function(req,res){

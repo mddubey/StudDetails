@@ -1,1 +1,1 @@
-{"14":{"RollNo":"14","Name":"hhluk","Percentage":45},"54":{"RollNo":"54","Name":"hhl","Percentage":14},"58":{"RollNo":"58","Name":"hhj","Percentage":14},"140":{"RollNo":"140","Name":"kumar","Percentage":45},"540":{"RollNo":"540","Name":"hhl","Percentage":14}}
+{"58":{"RollNo":"58","Name":"hhj","Percentage":14},"140":{"RollNo":"140","Name":"kumar","Percentage":45},"540":{"RollNo":"540","Name":"hhl","Percentage":14}}

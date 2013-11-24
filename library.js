@@ -12,17 +12,18 @@ sd.writeData = function(text){
   sd.fs.writeFile(recordFileName,text,'utf-8');
 }
 sd.addDetail = function(details){
-  var result = {}; 
+  var result = {record:{}}; 
   details.Percentage = (+parseFloat(details.Percentage).toFixed(2));
   if(sd.records.hasOwnProperty(details.RollNo)){
-    result.added = sd.records[details.RollNo];
-    var existRecord = sd.list(JSON.stringify(result));
-    return message_html.replace(/{message}/,('<h1>'+details.RollNo+' Record already Exists. </h1>'+existRecord));
+    result.record[details.RollNo] = sd.records[details.RollNo];
+    result.message = details.RollNo +' Record already Exists.';
+    return result;
   }
   sd.records[details.RollNo] = details;
   text = JSON.stringify(sd.records);
   sd.writeData(text);
-  result[details.RollNo] = details;
+  result.message = 'Record added Successfully';
+  result.record[details.RollNo] = details;
   return result;
 };
 
@@ -55,12 +56,14 @@ sd.searchRecord = function(record,fieldValue){
 };
 
 sd.removeRecord = function(record,fieldValue){
-  var data = JSON.parse(record);
   var result = {};
-  if(!data.hasOwnProperty(fieldValue))
-    return message_html.replace(/{message}/,'<h1>Roll number '+fieldValue+' is not present in records.</h1>');
-  result[fieldValue] = data[fieldValue];
-  return sd.list(JSON.stringify(result));
+  if(!record.hasOwnProperty(fieldValue)) 
+    return message_html.replace(/{message}/,'<h1>Roll number '+fieldValue+' is not present in records. </h1>');
+  result[fieldValue] = record[fieldValue];
+  delete record[fieldValue];
+  sd.records = record;
+  sd.writeData(JSON.stringify(record));
+  return result;
 };
 
 exports.sd = sd;

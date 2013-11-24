@@ -5,13 +5,13 @@ html
     include template
     h3  #{message}
     -if(Object.keys(list).length>0)
-      table.functions(border='1', width='500')
+      table(border='1', width='500')
         tr
           th Roll No
           th Name
           th Percentage
         -each val in list
          tr
-           td #{val.RollNo}
-           td #{val.Name}
-           td #{val.Percentage}
+           td #{val.rollNo}
+           td #{val.name}
+           td #{val.percentage}

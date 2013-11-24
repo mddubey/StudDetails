@@ -1,11 +1,13 @@
 html
   head
     title Student Details
-    script(type='text/javascript', src='validation.js')
+    script(type='text/javascript', src='/javascripts/validation.js')
   body
     include template
+    #data.error-box(style='background-position: 10px 50%; padding: 0px 0pt 0pt;')
+    #error.flash-content
     form#addRecord(action='/add', method='post', name='addRecord')
-      table.functions
+      table
         tr
           td(colspan='2')
             h3
@@ -13,17 +15,17 @@ html
         tr
           td Roll No: 
           td
-            input.box(type='text', placeholder='Roll', name='RollNo', onkeypress='return numValidation(event)', required='required')
+            input(type='text', placeholder='Roll', name='rollNo', required='required')
           br
           tr
             td Name:	
             td
-              input.box(type='text', placeholder='Name', name='Name')
+              input(type='text', placeholder='Name', name='name')
             br
             tr
               td Percentage: 
               td
-                input#percent.box(type='text', name='Percentage', placeholder='Percentage', onkeypress='return numValidation(event)')
+                input#percent(type='text', name='percentage', placeholder='Percentage')
               br
               tr
                 td(colspan='2')

@@ -12,16 +12,16 @@ sd.writeData = function(text){
 
 sd.addDetail = function(student){
   var result = {record:{}}; 
-  student.Percentage = (+parseFloat(student.Percentage).toFixed(2));
-  if(sd.records.hasOwnProperty(student.RollNo)){
-    result.record[student.RollNo] = sd.records[student.RollNo];
-    result.message = 'Roll Number ' + student.RollNo +' Record already Exists.';
+  student.percentage = (+parseFloat(student.percentage).toFixed(2));
+  if(sd.records.hasOwnProperty(student.rollNo)){
+    result.record[student.rollNo] = sd.records[student.rollNo];
+    result.message = 'Roll Number ' + student.rollNo +' Record already Exists.';
     return result;
   };
-  sd.records[student.RollNo] = student;
+  sd.records[student.rollNo] = student;
   sd.writeData(JSON.stringify(sd.records));
   result.message = 'Record added Successfully';
-  result.record[student.RollNo] = student;
+  result.record[student.rollNo] = student;
   return result;
 };
 

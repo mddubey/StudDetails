@@ -1,4 +1,4 @@
-var express = require('express');
+ var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
@@ -34,9 +34,9 @@ app.post('/add',handler.addRecord);
 app.post('/search',handler.searchRecord);
 app.post('/delete',handler.deleteRecord);
 
-app.get('/*',function(req,res){
-    res.render('message');
-});
+// app.get('/*',function(req,res){
+//     res.render('message');
+// });
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port '+ app.get('port'));

@@ -7,12 +7,12 @@ handler.addRecord = function(req,res){
 };
 
 handler.searchRecord = function(req,res){
-    var result = sd.searchRecord(req.body.RollNo);
+    var result = sd.searchRecord(req.body.rollNo);
     res.render('list',{message:result.message,list:result.record});
 };
 
 handler.deleteRecord = function(req,res){
-    var result = sd.removeRecord(req.body.RollNo);
+    var result = sd.removeRecord(req.body.rollNo);
     res.render('list',{message:result.message,list:result.record});
 };
 

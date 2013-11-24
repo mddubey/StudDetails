@@ -1,18 +1,20 @@
 html
   head
     title Student Details
-    script(type='text/javascript', src='/javascript/validation.js')
+    script(type='text/javascript', src='/javascripts/validation.js')
   body
     include template
     br
     br
     br
+    #data.error-box(style='background-position: 10px 50%; padding: 0px 0pt 0pt;')
+    #error.flash-content
     form#searchRecord(action='/search', method='post', name='searchRecord')
-      table.functions
+      table
         tr
           td Roll No : 
           td
-            input.box(type='text', placeholder='Roll', name='RollNo', onkeypress='return numValidation(event)', required='required')
+            input(type='text', placeholder='Roll', name='rollNo', required='required')
         br
         tr
           td(colspan='2')

@@ -1,6 +1,5 @@
  var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var handler = require('./handler').handler;
@@ -23,9 +22,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// app.get('/', routes.index);
 app.get('/home',routes.home);
-app.get('/users', user.list);
 app.get('/add',routes.add);
 app.get('/search',routes.search);
 app.get('/delete',routes.delete);
@@ -35,6 +32,7 @@ app.post('/login',handler.login);
 app.post('/add',handler.addRecord);
 app.post('/search',handler.searchRecord);
 app.post('/delete',handler.deleteRecord);
+
 
 // app.get('/*',function(req,res){
 //     res.render('message');

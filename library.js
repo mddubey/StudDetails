@@ -1,4 +1,3 @@
-var http = require('http');
 var sd = {};
 sd.fs = require("fs");
 var recordFileName = './record.txt';

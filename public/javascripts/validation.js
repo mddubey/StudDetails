@@ -14,6 +14,15 @@ var validateRoll = function(){
     return true;
 };
 
+var validateUser = function(){
+    var userName = document.getElementsByName("userID")[0].value;
+    var password = document.getElementsByName("password")[0].value;
+    if(userName && password)
+        return true;
+    showErrorMessge('User Name & Password are mandatory');
+    return false;
+};
+
 var validateInputs = function(){
     var percent = document.getElementsByName("percentage")[0].value;
     var roll = document.getElementsByName("rollNo")[0].value;
@@ -31,4 +40,4 @@ var validateInputs = function(){
         return false;
     };
     return true;
-}
+};

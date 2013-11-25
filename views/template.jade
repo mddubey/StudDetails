@@ -2,12 +2,12 @@ h4 Student Details
   table(width='800px')
     tr
       td(width='200px')
-        a(href='/home') Home
+        a(href='/home',onclick = "return #{isHomeClickable}") Home
       td(width='200px')
-        a(href='/add') Add
+        a(href='/add',onclick = "return #{isAddClickable}") Add
       td(width='200px')
-        a(href='/list') Show 
+        a(href='/list',onclick = "return #{isShowClickable}") Show 
       td(width='200px')
-        a(href='/search') Search
+        a(href='/search',onclick = "return #{isSearchClickable}") Search
       td(width='200px')
-        a(href='/delete') Delete
+        a(href='/delete',onclick = "return #{isDeleteClickable}") Delete

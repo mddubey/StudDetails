@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>login page</title>
+	<script type="text/javascript" src = "/javascripts/validation.js"></script>
 </head>
 <body>
 	<div class="login">
@@ -10,9 +11,13 @@
 		<form method = "post" name = "userLogin" action = "/login">
 			<tr><td><center><input type = "text" class = "box" placeholder = "Login ID" name= "userID"></center></td></tr>
 			<tr><td><center><input type = "password" class = "box" placeholder = "Password" name= "password"></center></td></tr>
-			<tr><td><center><input type = "submit" value = "Login" class = "btn"><center></td></tr>
+			<tr><td><center><input type = "submit" value = "Login" onclick = "return validateUser()" class = "btn"><center></td></tr>
 		</form>
+		<tr><td><center><input type = "submit" value = "Signup" class = "btn"><center></td></tr>
 	</table>
+	<div id="data" class="error-box" style="background-position: 10px 50%; padding: 0px 	0pt 0pt">
+            <div id="error" class="flash-content"></div>
+    	</div>
 	</div>
 </body>
 </html>

@@ -30,8 +30,8 @@ handler.login = function(req,res){
         var profiles = JSON.parse(data);
         var userID = req.body.userID;
         var password = req.body.password;
-        profiles.hasOwnProperty(userID) && (profiles[userID].password == password)
-        && res.render('home') || res.send('Login Failed');
+        profiles.hasOwnProperty(userID) && (profiles[userID].password === password)
+        && res.render('home') || res.render('/');
     });
 };
 

@@ -6,26 +6,32 @@ exports.index = function(req, res){
   res.redirect('/login');
 };
 
+var isLoggedIn = function(req,res,page){
+	req.cookies.login && res.render(page) || res.render('login',{message:'Login First'});	
+}
+
 exports.login = function(req, res){
-	req.cookies.remember && res.render('home') || res.render('login',{message:'User Login'});
+	// req.cookies.login && res.render('home') ||
+	res.render('login',{message:'User Login'});
 };
 
 exports.home = function(req, res){
-  req.cookies.login && res.render('home') || res.render('login',{message:'Login First'});
+  isLoggedIn(req,res,'home');
 };
 
 exports.add = function(req,res){
-	res.render('add');
+	isLoggedIn(req,res,'add');
 };
 
 exports.search = function(req,res){
-	res.render('search');
+	isLoggedIn(req,res,'search');
 };
 
 exports.delete = function(req,res){
-	res.render('delete');
+	isLoggedIn(req,res,'delete');
 };
 
-exports.list = function(req,res){
-	res.render('list');
+exports.signout = function(req,res){
+	res.clearCookie('login');
+    res.redirect('/login');
 };

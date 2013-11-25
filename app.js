@@ -30,6 +30,7 @@ app.get('/home',routes.home);
 app.get('/add',routes.add);
 app.get('/search',routes.search);
 app.get('/delete',routes.delete);
+app.get('/signout',routes.signout);
 
 app.get('/list',handler.showList);
 app.post('/authenticate',handler.authenticate);

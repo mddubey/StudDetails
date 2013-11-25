@@ -25,10 +25,13 @@ handler.deleteRecord = function(req,res){
 };
 
 handler.showList = function(req,res){
-    if(JSON.stringify(sd.records)=='{}')
-        res.render('list',{message:'No Record available.',list:{}});
-    else
-        res.render('list',{message:'Student List',list:sd.records});
+    var getList = function () {
+        if(JSON.stringify(sd.records)=='{}')
+            res.render('list',{message:'No Record available.',list:{}});
+        else
+            res.render('list',{message:'Student List',list:sd.records});
+    };
+    req.cookies.login && getList() || res.render('login',{message:'Login First'});
 };
 
 handler.authenticate = function(req,res){
@@ -36,7 +39,6 @@ handler.authenticate = function(req,res){
     var password = req.body.password;
     if(isUserAuthenticate(userID,password)){
         res.cookie('login','1');
-        req.body.remember && res.cookie('remember','1');
         res.render('home');
     }
     else

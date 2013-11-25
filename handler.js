@@ -31,7 +31,7 @@ handler.login = function(req,res){
         var userID = req.body.userID;
         var password = req.body.password;
         profiles.hasOwnProperty(userID) && (profiles[userID].password === password)
-        && res.render('home') || res.render('/');
+        && res.render('home') || res.render('login',{message:'Username or password is incorrect'});
     });
 };
 

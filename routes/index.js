@@ -2,6 +2,13 @@
 /*
  * GET home page.
  */
+exports.index = function(req, res){
+  res.redirect('/login');
+};
+
+exports.login = function(req, res){
+  res.render('login',{message:'User Login'});
+};
 
 exports.home = function(req, res){
   res.render('home');

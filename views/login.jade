@@ -1,0 +1,31 @@
+html
+  head
+    title login page
+    script(type='text/javascript', src='/javascripts/validation.js')
+  body
+    h1
+      center  Student Details
+    h2 #{message}
+    .login
+      table
+        tr
+          td 
+        form(method='post', name='userLogin', action='/login')
+          tr
+            td
+              center
+                input.box(type='text', placeholder='Login ID', name='userID')
+          tr
+            td
+              center
+                input.box(type='password', placeholder='Password', name='password')
+          tr
+            td
+              center
+                input.btn(type='submit', value='Login', onclick='return validateUser()')
+                center
+        tr
+          td
+            center
+              input.btn(type='submit', value='Signup')
+              center

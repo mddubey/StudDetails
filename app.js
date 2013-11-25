@@ -22,6 +22,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/',routes.index);
+app.get('/login',routes.login);
 app.get('/home',routes.home);
 app.get('/add',routes.add);
 app.get('/search',routes.search);

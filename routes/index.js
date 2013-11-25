@@ -7,11 +7,11 @@ exports.index = function(req, res){
 };
 
 exports.login = function(req, res){
-  res.render('login',{message:'User Login'});
+	req.cookies.remember && res.render('home') || res.render('login',{message:'User Login'});
 };
 
 exports.home = function(req, res){
-  res.render('home');
+  req.cookies.login && res.render('home') || res.render('login',{message:'Login First'});
 };
 
 exports.add = function(req,res){

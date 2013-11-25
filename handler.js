@@ -1,6 +1,13 @@
 var handler = {};
 var fs = require('fs');
 var sd = require('./library.js').sd;
+var profiles = JSON.parse(fs.readFileSync('userProfile.txt','utf-8'));
+
+var isUserAuthenticate = function(userName,password){
+    var profile = profiles[userName];
+    var validUser = profile && (profile.password === password);
+    return validUser;
+};
 
 handler.addRecord = function(req,res){
     var result = sd.addDetail(req.body);
@@ -24,15 +31,16 @@ handler.showList = function(req,res){
         res.render('list',{message:'Student List',list:sd.records});
 };
 
-handler.login = function(req,res){
-    fs.readFile('userProfile.txt','utf-8',function(err,data){
-        if(err) throw err;
-        var profiles = JSON.parse(data);
-        var userID = req.body.userID;
-        var password = req.body.password;
-        profiles.hasOwnProperty(userID) && (profiles[userID].password === password)
-        && res.render('home') || res.render('login',{message:'Username or password is incorrect'});
-    });
+handler.authenticate = function(req,res){
+    var userID = req.body.userID;
+    var password = req.body.password;
+    if(isUserAuthenticate(userID,password)){
+        res.cookie('login','1');
+        req.body.remember && res.cookie('remember','1');
+        res.render('home');
+    }
+    else
+        res.render('login',{message:'Username or password is incorrect'});
 };
 
 exports.handler = handler;
